@@ -723,6 +723,22 @@ for rope_key,rope_data in pairs(rope_bridges.ropes) do
       })
   end
   if minetest.get_modpath("hades_trees") then
+    rope_bridges.register_planks_bridge("rope_bridges:planks_pale_wood_"..rope_key,{
+        desc = rope_data.desc.." "..S("Rope Bridge with Pale Wood Planks"),
+        tiles = {"hades_trees_pale_wood.png", rope_data.texture},
+        sounds = wood_sounds,
+        recipe_rope = rope_data.item,
+        recipe_slab = "stairs:slab_pale_wood",
+        recipe_panel = "hades_moreblocks:panel_pale_wood",
+      })
+    rope_bridges.register_planks_bridge("rope_bridges:planks_cream_wood_"..rope_key,{
+        desc = rope_data.desc.." "..S("Rope Bridge with Crean Wood Planks"),
+        tiles = {"hades_trees_cream_wood.png", rope_data.texture},
+        sounds = wood_sounds,
+        recipe_rope = rope_data.item,
+        recipe_slab = "stairs:slab_cream_wood",
+        recipe_panel = "hades_moreblocks:panel_cream_wood",
+      })
     rope_bridges.register_planks_bridge("rope_bridges:planks_wood_"..rope_key,{
         desc = rope_data.desc.." "..S("Rope Bridge with Temperate Wood Planks"),
         tiles = {"default_wood.png", rope_data.texture},
@@ -730,6 +746,38 @@ for rope_key,rope_data in pairs(rope_bridges.ropes) do
         recipe_rope = rope_data.item,
         recipe_slab = "stairs:slab_wood",
         recipe_panel = "hades_moreblocks:panel_wood",
+      })
+    rope_bridges.register_planks_bridge("rope_bridges:planks_lush_wood_"..rope_key,{
+        desc = rope_data.desc.." "..S("Rope Bridge with Charred Wood Planks"),
+        tiles = {"hades_trees_lush_wood.png", rope_data.texture},
+        sounds = wood_sounds,
+        recipe_rope = rope_data.item,
+        recipe_slab = "stairs:slab_lush_wood",
+        recipe_panel = "hades_moreblocks:panel_lush_wood",
+      })
+    rope_bridges.register_planks_bridge("rope_bridges:planks_jungle_wood_"..rope_key,{
+        desc = rope_data.desc.." "..S("Rope Bridge with Tropical Wood Planks"),
+        tiles = {"default_junglewood.png", rope_data.texture},
+        sounds = wood_sounds,
+        recipe_rope = rope_data.item,
+        recipe_slab = "stairs:slab_wood",
+        recipe_panel = "hades_moreblocks:panel_wood",
+      })
+    rope_bridges.register_planks_bridge("rope_bridges:planks_charred_wood_"..rope_key,{
+        desc = rope_data.desc.." "..S("Rope Bridge with Charred Wood Planks"),
+        tiles = {"hades_trees_charred_wood.png", rope_data.texture},
+        sounds = wood_sounds,
+        recipe_rope = rope_data.item,
+        recipe_slab = "stairs:slab_charred_wood",
+        recipe_panel = "hades_moreblocks:panel_charred_wood",
+      })
+    rope_bridges.register_planks_bridge("rope_bridges:planks_canvas_wood_"..rope_key,{
+        desc = rope_data.desc.." "..S("Rope Bridge with Canvas Wood Planks"),
+        tiles = {"hades_trees_colwood_uncolored.png", rope_data.texture},
+        sounds = wood_sounds,
+        recipe_rope = rope_data.item,
+        recipe_slab = "stairs:slab_colwood_uncolored",
+        recipe_panel = "hades_moreblocks:panel_colwood_uncolored",
       })
   end
   if minetest.get_modpath("baldcypress") or minetest.get_modpath("hades_baldcypress") then
