@@ -1,0 +1,7 @@
+
+# Enable bridges body waving
+rope_bridges_body_waving (Enable bridges body waving.) bool true
+
+# 
+rope_bridges_all_body_variants (Register variant of bridge body for different woods and ropes) bool true
+rope_bridges_all_stilt_variants (Register variant of bridge stilt for different woods and ropes) bool true

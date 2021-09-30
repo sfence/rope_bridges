@@ -381,6 +381,8 @@ local part_stilt_cb = {
       {0.4375,-0.5,-0.3125,0.5,0.3125,-0.1875},
       {-0.5,0.375,-0.3125,-0.4375,0.5,-0.1875},
       {0.4375,0.375,-0.3125,0.5,0.5,-0.1875},
+      -- support platform for easier entry
+      {-0.3125,-0.5,-0.25,0.3125,-0.4375,-0.125},
     },
   }
 
@@ -396,6 +398,10 @@ local function get_lvlcode(level)
 end
 
 function rope_bridges.register_planks_bridge(bridge_name, bridge_data)
+  local use_waving = 0
+  if rope_bridges.bridge_body_waving then
+    use_waving = 2
+  end
   for lvl=0,7 do
     local level = lvl-3;
     
@@ -413,7 +419,7 @@ function rope_bridges.register_planks_bridge(bridge_name, bridge_data)
         groups = {choppy = 2},
         
         sunlight_propagates = true,
-        waving = 2,
+        waving = use_waving,
         paramtype = "light",
         paramtype2 = "facedir",
         drawtype = "mesh",
@@ -446,7 +452,7 @@ function rope_bridges.register_planks_bridge(bridge_name, bridge_data)
         groups = {choppy = 2},
         
         sunlight_propagates = true,
-        waving = 2,
+        waving = use_waving,
         paramtype = "light",
         paramtype2 = "facedir",
         drawtype = "mesh",
@@ -479,7 +485,7 @@ function rope_bridges.register_planks_bridge(bridge_name, bridge_data)
         groups = {choppy = 2},
         
         sunlight_propagates = true,
-        waving = 2,
+        waving = use_waving,
         paramtype = "light",
         paramtype2 = "facedir",
         drawtype = "mesh",
@@ -512,7 +518,7 @@ function rope_bridges.register_planks_bridge(bridge_name, bridge_data)
         groups = {choppy = 2},
         
         sunlight_propagates = true,
-        waving = 2,
+        waving = use_waving,
         paramtype = "light",
         paramtype2 = "facedir",
         drawtype = "mesh",
@@ -545,7 +551,7 @@ function rope_bridges.register_planks_bridge(bridge_name, bridge_data)
         groups = {choppy = 2},
         
         sunlight_propagates = true,
-        waving = 2,
+        waving = use_waving,
         paramtype = "light",
         paramtype2 = "facedir",
         drawtype = "mesh",
@@ -580,6 +586,8 @@ function rope_bridges.register_planks_bridge(bridge_name, bridge_data)
       --my_cb_box.fixed[index] = value;
     end
     
+    local stilt_tiles = table.copy(bridge_data.tiles)
+    stilt_tiles[1] = stilt_tiles[1].."^[transformR90"
     local my_data = {
         description = bridge_data.desc.." "..S("Stilt").." "..level,
         groups = {choppy = 2},
@@ -589,7 +597,7 @@ function rope_bridges.register_planks_bridge(bridge_name, bridge_data)
         paramtype2 = "facedir",
         drawtype = "mesh",
         mesh = "rope_bridges_planks_stilt_l"..lvlcode..".obj",
-        tiles = bridge_data.tiles,
+        tiles = stilt_tiles,
         
         selection_box = my_box;
         collision_box = my_cb_box;
