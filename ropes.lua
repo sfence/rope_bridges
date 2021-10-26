@@ -1,30 +1,50 @@
 
 local S = rope_bridges.translator;
 
-rope_bridges.ropes = {
-  rope_string = {
+rope_bridges.ropes = {}
+
+local all_ropes = false
+local enabled_ropes = nil
+if rope_bridges.enabled_ropes=="*" then
+  all_ropes = true
+else
+  enabled_ropes = string.split(rope_bridges.enabled_ropes)
+end
+
+local function add_rope(rope_key, rope_def)
+  local add = all_ropes;
+  if enabled_ropes then
+    if (table.indexof(enabled_ropes, rope_key)~=-1) then
+      add = true
+    end
+  end
+  if add then
+    rope_bridges.ropes[rope_key] = rope_def
+  end
+end
+
+add_rope("rope_string",{
     desc = S("String"),
     item = "rope_bridges:rope_string",
     texture = "rope_bridges_rope_string.png",
-  },
-  rope_vines = {
+  })
+add_rope("rope_vines",{
     desc = S("Vines"),
     item = "rope_bridges:rope_vines",
     texture = "rope_bridges_rope_vines.png",
-  },
-  rope_liana = {
+  })
+add_rope("rope_liana",{
     desc = S("Liana"),
     item = "rope_bridges:rope_liana",
     texture = "rope_bridges_rope_liana.png",
-  },
-}
+  })
 
 if minetest.get_modpath("ropes") then
-  rope_bridges.ropes["rope_ropesegment"] = {
+  add_rope("rope_ropesegment",{
       desc = S("Cotton"),
       item = "ropes:ropesegment",
       texture = "rope_bridges_rope_ropesegment.png"
-    }
+    })
 end
 
 if minetest.get_modpath("farming") then
@@ -35,18 +55,18 @@ if minetest.get_modpath("hades_farming") then
 end
 
 if minetest.get_modpath("moreblocks") then
-  rope_bridges.ropes["rope_junglegrass"] = {
+  add_rope("rope_junglegrass",{
       desc = S("Jungle Grass"),
       item = "moreblocks:rope",
       texture = "rope_bridges_rope_junglegrass.png"
-    }
+    })
 end
 if minetest.get_modpath("hades_moreblocks") then
-  rope_bridges.ropes["rope_junglegrass"] = {
+  add_rope("rope_junglegrass",{
       desc = S("Tropical Grass"),
       item = "hades_moreblocks:rope",
       texture = "rope_bridges_rope_junglegrass.png"
-    }
+    })
 end
 
 minetest.register_craftitem("rope_bridges:rope_string", {
@@ -91,7 +111,6 @@ if minetest.get_modpath("ebony") or minetest.get_modpath("hades_ebony") then
       recipe = {
         {"ebony:liana", "ebony:liana"},
         {"ebony:liana", "ebony:liana"},
-        {"ebony:liana", "ebony:liana"},
       },
     })
 end
@@ -99,7 +118,6 @@ if minetest.get_modpath("baldcypress") or minetest.get_modpath("hades_baldcypres
   minetest.register_craft({
       output = "rope_bridges:rope_liana",
       recipe = {
-        {"baldcypress:liana", "baldcypress:liana"},
         {"baldcypress:liana", "baldcypress:liana"},
         {"baldcypress:liana", "baldcypress:liana"},
       },

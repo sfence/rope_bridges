@@ -2,6 +2,22 @@
 # Enable bridges body waving
 rope_bridges_body_waving (Enable bridges body waving.) bool true
 
-# 
-rope_bridges_all_body_variants (Register variant of bridge body for different woods and ropes) bool true
-rope_bridges_all_stilt_variants (Register variant of bridge stilt for different woods and ropes) bool true
+# List of selected ropes for rope bridge building
+#
+# * - all supported ropes
+# wood1,wood2 - comma separated list of ropes keys
+# aviable wood ropes:
+#   rope_string,rope_vines,rope_liana,rope_ropesegment,rope_junglegrass
+rope_bridges_enabled_ropes (List of ropes for rope bridge building.) string *
+
+
+# List of selected woods for rope bridge building
+#
+# * - all supported woods
+# wood1,wood2 - comma separated list of woods keys
+# aviable wood keys:
+#   wood,acacia_wood,aspen_wood,junglewood,pine_wood
+#   wood,pale_wood,cream_wood,lush_wood,jungle_wood,charred_wood,canvas_wood
+#   baldcypress,birch,cherrytree,clementinetree,ebony,hollytree,larch,lemontree,mahogany,maple,oak,palm,plumtree,pomegranate,willow
+rope_bridges_enabled_woods (List of woods for rope bridge building.) string *
+
